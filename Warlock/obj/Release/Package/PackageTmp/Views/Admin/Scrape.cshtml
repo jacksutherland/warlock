@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Scrape";
+}
+
+<h2>Scrape</h2>
+
+<h4>Found @ViewBag.IssueCount issues. Added @ViewBag.NewIssueCount to database.</h4>
+
+
+<div class="margin-top">
+    @using (Html.BeginForm("Scrape", "Admin"))
+    {
+        @Html.TextBox("url", (string)ViewBag.Url, new { style = "width:500px;" })
+        <input type="submit" value="Scrape Again" placeholder="http://url" />
+    }
+</div>

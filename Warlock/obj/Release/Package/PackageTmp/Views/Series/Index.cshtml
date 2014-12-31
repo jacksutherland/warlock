@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Warlock.Models.Series>
+@using Warlock.Models
+
+@{
+    ViewBag.Title = "Series";
+}
+
+<h1 class="margin-bottom">Warlock Comic Collection of <a href="http://www.jacksutherland.com">Jack Sutherland</a></h1>
+
+<div class="margin-top-20 margin-bottom">
+    <h4 class="hidden-xs">The following is a list of all comic series where Adam Warlock cameos or makes an appearance</h4>
+    <h4 class="red-text margin-top10">Series in red contain issues missing from my collection</h4>
+</div>
+
+@foreach (Series series in Model)
+{
+    <a class="issue@(series.UnOwnedIssues ? " red-text" : "")" href="@Url.Action("Index", "Issues", new { id = series.Id })">
+        @if (!string.IsNullOrEmpty(series.ImageUrl))
+        {
+            <img src="@series.ImageUrl" class="comic" />
+        }
+        else
+        {
+            <img src="~/Images/no-image.jpg" class="comic" />
+        }
+        <h4 class="margin-top10">@series.Name</h4>
+        @if (series.Volume.HasValue)
+        {
+            <h6>@string.Format("Volume {0}", series.Volume)</h6>
+        }
+        <h6>@series.StartDate.Year</h6>
+    </a>
+}
+<div class="clearfix"></div>

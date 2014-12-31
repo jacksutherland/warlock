@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Issue>
+@using Warlock.Models
+
+<h1>Recent Issues</h1>
+
+@if (ViewBag.Search != null)
+{
+    <h4 class="margin-top-20 margin-bottom">Search: <em>"@ViewBag.Search"</em></h4>
+}
+
+@Html.Partial("_Pager")
+
+@foreach (Issue issue in Model)
+{
+    <div class="issue">
+        <img src="@issue.ImageUrl" class="comic" />
+        @if (ViewBag.Search != null)
+        {
+            <h4 class="margin-top10">@issue.Series.Name</h4>
+        }
+        else
+        {
+            <h4 class="margin-top10">@string.Format("{0} #{1}", issue.Series.Name, issue.Number)</h4>
+        }
+        <p>Date: @issue.SaleDate.ToShortDateString()</p>
+    </div>
+}
+<div class="clearfix"></div>
+
+@Html.Partial("_Pager")

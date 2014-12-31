@@ -1,0 +1,116 @@
+﻿@model Warlock.Models.Issue
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<style>
+    input[type="text"]
+    {
+        width:300px;
+    }
+</style>
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(m => m.SeriesId)
+    
+    <fieldset>
+        <legend>Issue</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Number)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Number)
+            @Html.ValidationMessageFor(model => model.Number)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.Description, new { style = "width:350px; height:150px;" })
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SaleDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SaleDate)
+            @Html.ValidationMessageFor(model => model.SaleDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Price)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Price)
+            @Html.ValidationMessageFor(model => model.Price)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ImageUrl)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.ImageUrl, new { placeholder = "../../images/comics/image.jpg" })
+            @Html.ValidationMessageFor(model => model.ImageUrl)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Writer)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Writer)
+            @Html.ValidationMessageFor(model => model.Writer)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Artist)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Artist)
+            @Html.ValidationMessageFor(model => model.Artist)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Colorist)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Colorist)
+            @Html.ValidationMessageFor(model => model.Colorist)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Letterist)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Letterist)
+            @Html.ValidationMessageFor(model => model.Letterist)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Owned)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Owned)
+            @Html.ValidationMessageFor(model => model.Owned)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Issue>
+@using Warlock.Models
+
+<h1>@string.Format("{0} ({1}) Issues", ViewBag.SeriesName, ViewBag.SeriesYear)</h1>
+
+<div class="margin-top-20 margin-bottom">
+    @if (Model.Any(i => !i.Owned))
+    {
+        <h4 class="margin-top-20 red-text">@Model.Count(i => !i.Owned) issues not yet in collection are highlighted in red</h4>
+    }
+     <a href="@Url.Action("Index", "Series")"><h4 class="blue-text margin-top10">Return to collection</h4></a>
+</div>
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="margin-top-20 margin-bottom">
+        @Html.ActionLink("Add Issue", "Create", new { id = ViewBag.SeriesId })
+    </div>
+}
+
+@Html.Partial("_Pager")
+
+@foreach (Issue issue in Model)
+{
+    <a class="issue@(issue.Owned ? "" : " red-text")" href="@Url.Action("Detail", new { id = issue.Id })">
+        @if (!string.IsNullOrEmpty(issue.ImageUrl))
+        {
+            <img src="@issue.ImageUrl" class="comic" />
+        }
+        <h4 class="margin-top10">@string.Format("{0} #{1}", issue.Series.Name, issue.Number)</h4>
+        @if (issue.SaleDate.HasValue)
+        {
+            <h6>@issue.SaleDate.Value.ToShortDateString()</h6>
+        }
+        @if (User.Identity.IsAuthenticated)
+        {
+            using (Html.BeginForm("ToggleIssueOwned", "Issues", new { id = issue.Id }))
+            {
+                <input type="submit" value="@(string.Format("Mark as {0}", issue.Owned ? "Unowned" : "Owned"))" />
+            }
+        }
+    </a>
+}
+<div class="clearfix"></div>
+
+@Html.Partial("_Pager")

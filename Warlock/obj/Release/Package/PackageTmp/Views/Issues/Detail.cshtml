@@ -1,0 +1,51 @@
+﻿@model Issue
+@using Warlock.Models
+
+@if (Model.Series.Volume == null)
+{
+    <h1>@string.Format("{0} #{1}", Model.Series.Name, Model.Number)</h1>
+}
+else
+{
+    <h1>@string.Format("{0} (Vol {1}) #{2}", Model.Series.Name, Model.Series.Volume, Model.Number)</h1>
+}
+
+<div class="margin-top-20">
+    @if (Model.SaleDate.HasValue)
+    {
+        <h4 class="margin-top10">Date: @Model.SaleDate.Value.ToShortDateString()</h4>
+    }
+    @if (!string.IsNullOrEmpty(Model.Writer))
+    {
+        <h4 class="margin-top10">Writer: @Model.Writer</h4>
+    }
+    @if (!string.IsNullOrEmpty(Model.Artist))
+    {
+        <h4 class="margin-top10">Artist: @Model.Artist</h4>
+    }
+    @if (!string.IsNullOrEmpty(Model.Colorist))
+    {
+        <h4 class="margin-top10">Colorist: @Model.Colorist</h4>
+    }
+    @if (!string.IsNullOrEmpty(Model.Letterist))
+    {
+        <h4 class="margin-top10">Letterist: @Model.Letterist</h4>
+    }
+    @if(!Model.Owned)
+    {
+        <h4 class="red-text margin-top10">I need this issue</h4>
+    }
+    <a href="@Url.Action("Index", "Issues", new { id = Model.SeriesId })"><h4 class="blue-text margin-top10">Return to series</h4></a>
+</div>
+
+<div class="margin-top">
+    @if (!string.IsNullOrEmpty(Model.ImageUrl))
+    {
+        <img class="text-comic" src="@Model.ImageUrl" title="@Model.Series.Name" align="left" />
+    }
+    @if (!string.IsNullOrWhiteSpace(Model.Description))
+    {
+        @Html.Raw(@Model.Description.Replace("\n", "<br />"))
+    }
+    <div class="clearfix"></div>
+</div>

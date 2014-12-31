@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>The Adam Warlock Collection</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <link href='http://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/bundles/css")
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a class="logo" href="@Url.Action("Index", "Home")">
+                            <img src="~/Images/warlock-logo.png" />
+                            <span class="hidden-xs">The Ultimate Adam Warlock Comic Collection</span>
+                            <div class="visible-xs margin-left">The Ultimate Adam Warlock Comic Collection</div>
+                        </a>                        
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="site-nav hidden-xs">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <ul>                            
+                            @*<li>@Html.ActionLink("Recent Issues", "Recent", "Issues")</li>*@
+                            <li>@Html.ActionLink("Collection", "Index", "Series")</li>
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li><a href="http://www.jacksutherland.com">Jack's Website</a></li>
+                            @if (User.Identity.Name == "jacksutherl")
+                            { 
+                                <li>@Html.ActionLink("Add Series", "Create", "Series")</li>
+                                @*<li>@Html.ActionLink("Scrape", "Scrape", "Admin")</li>*@                                
+                            }
+                        </ul>
+                    </div>
+                    <div class="col-xs-4 text-right">
+                        @using (Html.BeginForm("Index", "Series", FormMethod.Post, new { onsubmit = "if($('#search').val().length < 3){ alert('Search criteria is too short. Enter at least 3 characters.'); return false; }" }))
+                        {
+                            @Html.TextBox("search", "", new { placeholder = "Search Series" })
+                            <input type="submit" value="Go" />
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="content-container">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        Site by <a href="http://www.southtunnel.com">Southtunnel</a> 
+                        -  
+                        @Html.ActionLink("About", "About", "Home") 
+                        - 
+                        @Html.Partial("_LoginPartial") 
+                    </div>
+                </div>
+            </div>
+        </footer>
+        
+        @Scripts.Render("~/bundles/js")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

@@ -1,0 +1,20 @@
+﻿@if(ViewBag.PageCount != null && ViewBag.Page != null)
+{ 
+    <div class="pager">
+        @if ((int)ViewBag.PageCount > 1)
+        {
+            <h5>Pages:</h5>
+            for (int page = 0; page <= (int)ViewBag.PageCount; page++)
+            {
+                if (page == ViewBag.Page)
+                {
+                    <strong>@(page + 1)</strong>
+                }
+                else
+                {
+                    @Html.ActionLink((page + 1).ToString(), "Index", new { page = page + 1 })
+                }
+            }
+        }
+    </div>
+}

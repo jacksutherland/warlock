@@ -1,0 +1,224 @@
+﻿body
+{
+    font-family:Arial, sans-serif;
+    background-color:#000;
+    background:url(../../Images/warlock-bkg.jpg) no-repeat #000;
+    background-position-y:100px;
+    background-size:100% auto;
+    overflow-x:hidden;
+}
+
+/*
+    Colors
+    Teal: #00748D
+    Blue: #6AACE6
+    Blue 2: #629ED4
+*/
+
+h1, h2, h3, h4, h5, h6
+{
+    font-family: 'Orbitron', sans-serif;
+    font-style: normal;
+    font-weight: 900;
+    color:#444;
+    margin:0 0 5px 0;
+}
+h1 { margin-bottom:30px; }
+h1 a { color:#444; }
+p 
+{
+    margin:0;
+}
+
+ul
+{
+    list-style:none;
+    list-style-position:inside;
+    margin:0;
+    padding:0;
+}
+
+.margin-top-20 { margin-top:-20px; }
+.margin-top { margin-top:30px; }
+.margin-top5 { margin-top:5px; }
+.margin-top10 { margin-top:10px; }
+.margin-bottom { margin-bottom:30px; }
+.margin-bottom10 { margin-bottom:10px; }
+
+.red-text { color:red; }
+.red-text * { color:red; }
+.blue-text { color:#629ED4; }
+
+input[type="text"], input[type="datetime"], input[type="number"]
+{
+    border-radius: 4px;
+    padding: 0px 5px;
+    border-width:1px;
+}
+button, .button, input[type="submit"]
+{
+    border-radius: 4px;
+    padding: 0px 10px;
+    border-width:1px;
+}
+
+header
+{    
+    background:url(../../Images/dark_fish_skin.png) repeat;
+    border-bottom:1px solid #000000;
+    box-shadow:inset 0 0 3px #000000;
+    margin:-10px -10px 0 -10px;
+    padding:15px 10px 3px 10px;
+    color:#FFFFFF;
+}
+
+header .logo img
+{
+    width:300px;
+}
+header .logo span
+{
+    color:#fefefe;
+    font-weight:bold;
+    font-size:10px;
+}
+header .logo .visible-xs
+{
+    color:#fefefe;
+    font-weight:bold;
+    font-size:10px;
+    margin:-10px 0 5px 30px;
+}
+header a.logo:hover { text-decoration:none; }
+
+header .login-links
+{
+    font-style: normal;
+    font-weight: 700;
+    font-size:12px;
+    color:#ddd;
+    margin:8px 0 0 0;
+}
+header .login-links form
+{
+    display:inline;
+}
+header .login-links a
+{
+    margin:0 0 0 10px;
+    color:#ddd;
+}
+header .login-links a:hover { color:#fff; }
+
+footer
+{
+    color:#777;
+    text-align:center;
+    margin-bottom:30px;
+}
+footer a, footer a:active, footer a:visited { color:#777; text-decoration:underline; }
+footer a:hover { color:#aaa; }
+footer .login-links { display:inline; }
+footer form { display:inline; }
+
+.site-nav
+{
+    background:#333333;
+    border-top:1px solid #4f4f4f;
+}
+.site-nav ul li
+{
+    display:inline;
+}
+.site-nav ul li:first-child {  }
+.site-nav ul li a
+{
+    font-style: normal;
+    font-weight: 700;
+    font-size:12px;
+    color:#FFFFFF;
+    border-left:1px solid #4f4f4f;
+    border-right:1px solid #000000;
+    display:block;
+    float:left;
+    padding:7px 20px;
+}
+.site-nav ul li a:hover
+{
+    text-decoration:none;
+    background-color:#444;
+    border-left:1px solid #555;
+    border-right:1px solid #222;
+}
+.site-nav input
+{
+    margin-top:4px;
+}
+
+.content-container
+{
+    margin:30px 0;
+    padding:30px;
+    border-top:4px solid #629ED4;
+    background:url(../../Images/grey.png) repeat;
+    -webkit-box-shadow: 0px 0px 20px 5px rgba(0,0,0,1);
+    -moz-box-shadow: 0px 0px 20px 5px rgba(0,0,0,1);
+    box-shadow: 0px 0px 20px 5px rgba(0,0,0,1);
+}
+
+img.comic
+{
+    height:250px;
+    max-width:200px;
+    border:2px solid #FFF;
+    -webkit-box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.5);
+}
+
+img.text-comic
+{
+    margin:0 20px 10px 0;
+    border:2px solid #FFF;
+    -webkit-box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.5);
+}
+
+a:hover img.comic
+{
+    -webkit-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.5);
+}
+
+.issue
+{
+    display:block;
+    width:22%;    
+    float:left;
+    margin:0 20px 30px 0;
+    text-align:center;
+    min-height: 325px;
+    min-width:200px;
+}
+.issue h4
+{
+    max-height: 39px;
+    overflow: hidden;
+}
+
+.pager
+{
+    text-align:center;
+    background:#eee;
+    padding:10px 0;
+}
+.pager h5
+{
+    display:inline;
+}
+.pager a, .pager strong
+{
+    margin:0 5px;
+}
