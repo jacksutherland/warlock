@@ -36,6 +36,10 @@ else
         <h4 class="red-text margin-top10">I need this issue</h4>
     }
     <a href="@Url.Action("Index", "Issues", new { id = Model.SeriesId })"><h4 class="blue-text margin-top10">Return to series</h4></a>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <a href="@Url.Action("Edit", "Issues", new { id = Model.Id })"><h4 class="blue-text margin-top10">Edit</h4></a>
+    }
 </div>
 
 <div class="margin-top">

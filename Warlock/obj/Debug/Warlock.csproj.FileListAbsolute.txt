@@ -90,3 +90,4 @@ C:\ComicsDev\Warlock\Warlock\obj\Debug\Warlock.Migrations.CreateCollections.reso
 C:\ComicsDev\Warlock\Warlock\obj\Debug\Warlock.csproj.GenerateResource.Cache
 C:\ComicsDev\Warlock\Warlock\obj\Debug\Warlock.dll
 C:\ComicsDev\Warlock\Warlock\obj\Debug\Warlock.pdb
+C:\ComicsDev\Warlock\Warlock\obj\Debug\Warlock.csprojResolveAssemblyReference.cache

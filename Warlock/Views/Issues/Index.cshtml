@@ -36,7 +36,7 @@
             using (Html.BeginForm("ToggleIssueOwned", "Issues", new { id = issue.Id }))
             {
                 <input type="submit" value="@(string.Format("Mark as {0}", issue.Owned ? "Unowned" : "Owned"))" />
-            }
+            }            
         }
     </a>
 }

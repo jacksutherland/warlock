@@ -155,7 +155,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/27/2014 13:26:34</publishTime>
     </File>
     <File Include="bin/Warlock.dll">
-      <publishTime>12/31/2014 09:48:56</publishTime>
+      <publishTime>12/31/2014 11:37:35</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>12/27/2014 13:26:36</publishTime>
@@ -393,6 +393,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Images/bullet.png">
       <publishTime>12/27/2014 13:26:30</publishTime>
+    </File>
+    <File Include="Images/comics/2in162.jpg">
+      <publishTime>12/31/2014 11:36:43</publishTime>
+    </File>
+    <File Include="Images/comics/2in163.jpg">
+      <publishTime>12/31/2014 11:36:28</publishTime>
     </File>
     <File Include="Images/comics/avengers118.jpg">
       <publishTime>12/30/2014 10:52:45</publishTime>

@@ -232,6 +232,8 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <None Include="Properties\PublishProfiles\GoDaddy.pubxml" />
+    <Content Include="Images\comics\2in162.jpg" />
+    <Content Include="Images\comics\2in163.jpg" />
     <Content Include="Images\comics\avengers118.jpg" />
     <Content Include="Images\comics\avengersannual7.jpg" />
     <Content Include="Images\comics\captainmarvel39.jpg" />
@@ -322,6 +324,7 @@
     <Content Include="Views\Issues\Index.cshtml" />
     <Content Include="Views\Issues\Create.cshtml" />
     <Content Include="Views\Issues\Detail.cshtml" />
+    <Content Include="Views\Issues\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

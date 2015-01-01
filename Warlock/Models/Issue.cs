@@ -33,5 +33,8 @@ namespace Warlock.Models
         public string Letterist { get; set; }
 
         public bool Owned { get; set; }
+
+        [NotMapped]
+        public HttpPostedFileBase ImageUpload { get; set; }
     }
 }

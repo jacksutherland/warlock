@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -32,7 +34,7 @@ namespace Warlock.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Issue issue)
+        public ActionResult Create(Issue issue, HttpPostedFileBase imageUpload)
         {
             if (ModelState.IsValid)
             {
@@ -42,6 +44,30 @@ namespace Warlock.Controllers
             }
 
             return View(issue);
+        }
+
+        [Authorize]
+        public ActionResult Edit(int id)
+        {
+            return View(db.Issues.Find(id));
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult Edit(Issue issue)
+        {
+            if (issue.ImageUpload != null && issue.ImageUpload.ContentLength > 0)
+            {
+                string uploadDir = "~/Images/comics";
+                string imagePath = Path.Combine(Server.MapPath(uploadDir), issue.ImageUpload.FileName);
+                string imageUrl = Path.Combine(uploadDir, issue.ImageUpload.FileName);
+                issue.ImageUpload.SaveAs(imagePath);
+                issue.ImageUrl = "../../Images/comics/" + issue.ImageUpload.FileName;
+            }
+
+            db.Entry(issue).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Detail", new { id = issue.Id });
         }
 
         public ActionResult Detail(int id)
