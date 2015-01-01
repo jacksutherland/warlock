@@ -34,10 +34,19 @@ namespace Warlock.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Issue issue, HttpPostedFileBase imageUpload)
+        public ActionResult Create(Issue issue)
         {
             if (ModelState.IsValid)
             {
+                if (issue.ImageUpload != null && issue.ImageUpload.ContentLength > 0)
+                {
+                    string uploadDir = "~/Images/comics";
+                    string imagePath = Path.Combine(Server.MapPath(uploadDir), issue.ImageUpload.FileName);
+                    string imageUrl = Path.Combine(uploadDir, issue.ImageUpload.FileName);
+                    issue.ImageUpload.SaveAs(imagePath);
+                    issue.ImageUrl = "../../Images/comics/" + issue.ImageUpload.FileName;
+                }
+
                 db.Issues.Add(issue);
                 db.SaveChanges();
                 return RedirectToAction("Index", new { id = issue.SeriesId });
