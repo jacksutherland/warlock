@@ -1,0 +1,29 @@
+﻿@model List<Warlock.Models.Collection>
+@using Warlock.Models
+
+@{
+    ViewBag.Title = "Collection";
+}
+
+<h1>Collections</h1>
+
+@foreach (Collection collection in Model)
+{
+    <div>
+        <h4 class="margin-top10">@collection.Name</h4>
+    </div>
+    <div>
+        @Html.ActionLink(string.Format("{0} Series", collection.Name), "Series", "Collection", new { id = collection.Id }, null)
+    </div>
+    <div>
+        @Html.ActionLink(string.Format("All {0} Issues", collection.Name), "Issues", "Collection", new { id = collection.Id }, null)
+    </div>
+    <div>
+        @Html.ActionLink("Owned Issues", "Issues", "Collection", new { id = collection.Id, show = IssueDisplayType.Owned }, null)
+    </div>
+    <div>
+        @Html.ActionLink("Needed Issues", "Issues", "Collection", new { id = collection.Id, show = IssueDisplayType.Needed }, null)
+    </div>
+
+}
+<div class="clearfix"></div>

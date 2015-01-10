@@ -4,16 +4,10 @@
     ViewBag.Title = "Create";
 }
 
-<style>
-    input[type="text"]
-    {
-        width:300px;
-    }
-</style>
-
 <h2>Create</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm("Create", "Issues", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
     @Html.HiddenFor(m => m.SeriesId)
@@ -59,6 +53,13 @@
         <div class="editor-field">
             @Html.TextBoxFor(model => model.ImageUrl, new { placeholder = "../../images/comics/image.jpg" })
             @Html.ValidationMessageFor(model => model.ImageUrl)
+        </div>
+
+        <div class="editor-label">
+            <label>Image Upload</label>
+        </div>
+        <div class="editor-field">
+            <input type="file" id="ImageUpload" name="ImageUpload" />
         </div>
 
         <div class="editor-label">

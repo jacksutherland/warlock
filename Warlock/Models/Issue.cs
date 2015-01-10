@@ -6,6 +6,8 @@ using System.Web;
 
 namespace Warlock.Models
 {
+    public enum IssueDisplayType { All = 1, Owned = 2, Needed = 3 };
+
     public class Issue
     {
         public int Id { get; set; }

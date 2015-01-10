@@ -1,0 +1,19 @@
+﻿@using Warlock.Models
+
+@{
+    string action = ViewContext.RouteData.Values["action"].ToString();
+    string controller = ViewContext.RouteData.Values["controller"].ToString();
+}
+
+<ul>
+    <li class="@((action == "Index" && controller == "Series") ? "selected" : "")">@Html.ActionLink("Collection", "Index", "Series")</li>
+    <li class="@((action == "About") ? "selected" : "")">@Html.ActionLink("About", "About", "Home")</li>    
+    <li class="@((ViewBag.DisplayType == IssueDisplayType.All) ? "selected" : "")">@Html.ActionLink("All Issues", "List", "Issues")</li>
+    <li class="@((ViewBag.DisplayType == IssueDisplayType.Owned) ? "selected" : "")">@Html.ActionLink("Owned Issues", "List", "Issues", new { show = IssueDisplayType.Owned }, null)</li>
+    <li class="@((ViewBag.DisplayType == IssueDisplayType.Needed) ? "selected" : "")">@Html.ActionLink("Needed Issues", "List", "Issues", new { show = IssueDisplayType.Needed }, null)</li>
+    @if (User.Identity.Name == "jacksutherl")
+    {
+        <li class="@((action == "Create" && controller == "Series") ? "selected" : "")">@Html.ActionLink("Add Series", "Create", "Series")</li>
+        @*<li>@Html.ActionLink("Scrape", "Scrape", "Admin")</li>*@
+    }
+</ul>

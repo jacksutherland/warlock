@@ -8,12 +8,14 @@
     {
         <h4 class="margin-top-20 red-text">@Model.Count(i => !i.Owned) issues not yet in collection are highlighted in red</h4>
     }
-     <a href="@Url.Action("Index", "Series")"><h4 class="blue-text margin-top10">Return to collection</h4></a>
+    <div class="margin-top10">
+        <a href="@Url.Action("Index", "Series")" class="big-link">Go to collection</a>
+    </div>
 </div>
 @if (User.Identity.IsAuthenticated)
 {
     <div class="margin-top-20 margin-bottom">
-        @Html.ActionLink("Add Issue", "Create", new { id = ViewBag.SeriesId })
+        <a href="@Url.Action("Create", "Issues", new { id = ViewBag.SeriesId })" class="big-link">Add Issue</a>
     </div>
 }
 
@@ -26,6 +28,10 @@
         {
             <img src="@issue.ImageUrl" class="comic" />
         }
+        else
+        {
+            <img src="~/Images/no-image.jpg" class="comic" />
+        }        
         <h4 class="margin-top10">@string.Format("{0} #{1}", issue.Series.Name, issue.Number)</h4>
         @if (issue.SaleDate.HasValue)
         {
@@ -36,7 +42,7 @@
             using (Html.BeginForm("ToggleIssueOwned", "Issues", new { id = issue.Id }))
             {
                 <input type="submit" value="@(string.Format("Mark as {0}", issue.Owned ? "Unowned" : "Owned"))" />
-            }
+            }            
         }
     </a>
 }

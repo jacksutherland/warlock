@@ -25,6 +25,8 @@ namespace Warlock.Controllers
             return View(issues);
         }
 
+        
+
         [Authorize]
         public ActionResult Create(int id)
         {
@@ -125,12 +127,20 @@ namespace Warlock.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult ToggleIssueOwned(int id)
+        public ActionResult ToggleIssueOwned(int id, string returnAction = "")
         {
             Issue issue = db.Issues.Find(id);
             issue.Owned = !issue.Owned;
             db.SaveChanges();
-            return RedirectToAction("Index", new { id = issue.SeriesId });
+            if (string.IsNullOrEmpty(returnAction))
+            {
+                return RedirectToAction("Index", new { id = issue.SeriesId });
+            }
+            else
+            {
+                return RedirectToAction(returnAction, new { id = issue.Id });
+            }
         }
+
     }
 }

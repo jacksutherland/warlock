@@ -188,6 +188,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CollectionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IssuesController.cs" />
     <Compile Include="Controllers\SeriesController.cs" />
@@ -206,6 +207,10 @@
     <Compile Include="Migrations\201412300006515_CreateCollections.cs" />
     <Compile Include="Migrations\201412300006515_CreateCollections.Designer.cs">
       <DependentUpon>201412300006515_CreateCollections.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501101715100_AddOngoingToSeries.cs" />
+    <Compile Include="Migrations\201501101715100_AddOngoingToSeries.Designer.cs">
+      <DependentUpon>201501101715100_AddOngoingToSeries.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -232,47 +237,6 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <None Include="Properties\PublishProfiles\GoDaddy.pubxml" />
-    <Content Include="Images\comics\2in162.jpg" />
-    <Content Include="Images\comics\2in163.jpg" />
-    <Content Include="Images\comics\avengers118.jpg" />
-    <Content Include="Images\comics\avengersannual7.jpg" />
-    <Content Include="Images\comics\captainmarvel39.jpg" />
-    <Content Include="Images\comics\drstrange27.jpg" />
-    <Content Include="Images\comics\f4172.jpg" />
-    <Content Include="Images\comics\f466.jpg" />
-    <Content Include="Images\comics\f467.jpg" />
-    <Content Include="Images\comics\hulk158.jpg" />
-    <Content Include="Images\comics\hulk176.jpg" />
-    <Content Include="Images\comics\hulk177.jpg" />
-    <Content Include="Images\comics\hulk178.jpg" />
-    <Content Include="Images\comics\hulkannual6.jpg" />
-    <Content Include="Images\comics\marvel2in1annual2.jpg" />
-    <Content Include="Images\comics\marvelpremiere1.jpg" />
-    <Content Include="Images\comics\marvelpremiere2.jpg" />
-    <Content Include="Images\comics\marvelteamup55.jpg" />
-    <Content Include="Images\comics\spiderman15.jpg" />
-    <Content Include="Images\comics\strangetales178.jpg" />
-    <Content Include="Images\comics\strangetales179.jpg" />
-    <Content Include="Images\comics\strangetales180.jpg" />
-    <Content Include="Images\comics\strangetales181.jpg" />
-    <Content Include="Images\comics\thor165.jpg" />
-    <Content Include="Images\comics\thor166.jpg" />
-    <Content Include="Images\comics\warlock-headstone.jpg" />
-    <Content Include="Images\comics\warlock1.jpg" />
-    <Content Include="Images\comics\warlock10.jpg" />
-    <Content Include="Images\comics\warlock11.jpg" />
-    <Content Include="Images\comics\warlock12.jpg" />
-    <Content Include="Images\comics\warlock13.jpg" />
-    <Content Include="Images\comics\warlock14.jpg" />
-    <Content Include="Images\comics\warlock15.jpg" />
-    <Content Include="Images\comics\warlock2.jpg" />
-    <Content Include="Images\comics\warlock3.jpg" />
-    <Content Include="Images\comics\warlock4.jpg" />
-    <Content Include="Images\comics\warlock5.jpg" />
-    <Content Include="Images\comics\warlock6.jpg" />
-    <Content Include="Images\comics\warlock7.jpg" />
-    <Content Include="Images\comics\warlock8.jpg" />
-    <Content Include="Images\comics\warlock9.jpg" />
     <Content Include="Images\dark_fish_skin.png" />
     <Content Include="Images\grey.png" />
     <Content Include="Images\gun_metal.png" />
@@ -325,9 +289,15 @@
     <Content Include="Views\Issues\Create.cshtml" />
     <Content Include="Views\Issues\Detail.cshtml" />
     <Content Include="Views\Issues\Edit.cshtml" />
+    <Content Include="Views\Collection\Issues.cshtml" />
+    <Content Include="Views\Shared\_Nav.cshtml" />
+    <Content Include="Views\Collection\Index.cshtml" />
+    <Content Include="Views\Collection\Series.cshtml" />
+    <Content Include="Views\Series\Ongoing.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\comics\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -341,6 +311,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201412300006515_CreateCollections.resx">
       <DependentUpon>201412300006515_CreateCollections.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501101715100_AddOngoingToSeries.resx">
+      <DependentUpon>201501101715100_AddOngoingToSeries.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

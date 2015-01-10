@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Issue>
+@using Warlock.Models
+
+@if((IssueDisplayType)ViewBag.DisplayType == IssueDisplayType.Owned)
+{
+    <h1>All Owned Issues</h1>
+}
+else if((IssueDisplayType)ViewBag.DisplayType == IssueDisplayType.Needed)
+{
+    <h1>All Needed Issues</h1>
+}
+else
+{
+    <h1>All Issues</h1>
+}
+
+<div class="margin-top-20 margin-bottom">
+    <a href="@Url.Action("Index", "Series")" class="big-link">Go to collection</a>
+</div>
+
+<ul>
+    @foreach (Issue issue in Model)
+    {
+        <li>
+            @Html.ActionLink(string.Format("{0}{1}{2} #{3}",
+                (issue.SaleDate.HasValue ? string.Format("{0} - ", issue.SaleDate.Value.ToShortDateString()) : ""),
+                (issue.Series.Name),
+                (issue.Series.Volume.HasValue ? string.Format(" (Vol {0})", issue.Series.Volume) : ""),
+                (issue.Number)), "Detail", new { id = issue.Id })
+        </li>
+    }
+</ul>

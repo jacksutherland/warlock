@@ -22,6 +22,30 @@
         </div>
 
         <div class="editor-label">
+            @Html.LabelFor(model => model.CollectionId, "Collection")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(m => m.CollectionId, (IEnumerable<SelectListItem>)ViewBag.Collections, "No Collection")
+            @Html.ValidationMessageFor(model => model.CollectionId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PublisherId, "Publisher")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(m => m.PublisherId, (IEnumerable<SelectListItem>)ViewBag.Publishers)
+            @Html.ValidationMessageFor(model => model.PublisherId)
+        </div>
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Ongoing)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Ongoing)
+            @Html.ValidationMessageFor(model => model.Ongoing)
+        </div>
+         
+        <div class="editor-label">
             @Html.LabelFor(model => model.StartDate)
         </div>
         <div class="editor-field">

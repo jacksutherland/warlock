@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Warlock.Models.Series>
+@using Warlock.Models
+
+@{
+    ViewBag.Title = "Ongoing Series";
+}
+
+<h1 class="margin-bottom">Ongoing Series</h1>
+
+@foreach (Series series in Model)
+{
+    <div class="item-link">
+        <h4 class="margin-top10">@series.Name</h4>
+        @if (series.Volume.HasValue)
+        {
+            <h6>@string.Format("Volume {0}", series.Volume)</h6>
+        }
+        <h6>@series.Publisher.Name</h6>
+        <h6>@series.StartDate.Year</h6>                
+    </div>    
+}
+<div class="clearfix"></div>

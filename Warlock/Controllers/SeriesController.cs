@@ -40,6 +40,11 @@ namespace Warlock.Controllers
             return View(series);
         }
 
+        public ActionResult Ongoing()
+        {
+            return View(db.Series.Where(s => s.Ongoing));
+        }
+
         //
         // GET: /Series/Details/5
 
@@ -56,6 +61,20 @@ namespace Warlock.Controllers
         [Authorize]
         public ActionResult Create()
         {
+            ViewBag.Collections = db.Collections.ToList().Select(c =>
+                new SelectListItem
+                {
+                    Value = c.Id.ToString(),
+                    Text = c.Name
+                });
+
+            ViewBag.Publishers = db.Publishers.ToList().Select(p =>
+                new SelectListItem
+                {
+                    Value = p.Id.ToString(),
+                    Text = p.Name
+                });
+
             return View();
         }
 
@@ -68,8 +87,6 @@ namespace Warlock.Controllers
         {
             if (ModelState.IsValid)
             {
-                series.PublisherId = 1;
-                series.CollectionId = 1;
                 db.Series.Add(series);
                 db.SaveChanges();
 
@@ -88,6 +105,20 @@ namespace Warlock.Controllers
 
                 return RedirectToAction("Index");
             }
+
+            ViewBag.Collections = db.Collections.ToList().Select(c =>
+                new SelectListItem
+                {
+                    Value = c.Id.ToString(),
+                    Text = c.Name
+                });
+
+            ViewBag.Publishers = db.Publishers.ToList().Select(p =>
+                new SelectListItem
+                {
+                    Value = p.Id.ToString(),
+                    Text = p.Name
+                });
 
             return View(series);
         }

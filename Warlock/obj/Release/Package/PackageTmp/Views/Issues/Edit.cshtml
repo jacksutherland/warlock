@@ -1,19 +1,29 @@
 ﻿@model Warlock.Models.Issue
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Edit";
 }
 
-<h2>Create</h2>
+<style>
+    input[type="text"] {
+        width: 300px;
+    }
+</style>
 
-@using (Html.BeginForm("Create", "Issues", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("Edit", "Issues", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-    @Html.HiddenFor(m => m.SeriesId)
-    
+
     <fieldset>
         <legend>Issue</legend>
+
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.SeriesId)
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Number)
@@ -27,7 +37,7 @@
             @Html.LabelFor(model => model.Description)
         </div>
         <div class="editor-field">
-            @Html.TextAreaFor(model => model.Description, new { style = "width:350px; height:150px;" })
+            @Html.TextAreaFor(model => model.Description)
             @Html.ValidationMessageFor(model => model.Description)
         </div>
 
@@ -51,7 +61,7 @@
             @Html.LabelFor(model => model.ImageUrl)
         </div>
         <div class="editor-field">
-            @Html.TextBoxFor(model => model.ImageUrl, new { placeholder = "../../images/comics/image.jpg" })
+            @Html.EditorFor(model => model.ImageUrl)
             @Html.ValidationMessageFor(model => model.ImageUrl)
         </div>
 
@@ -103,7 +113,7 @@
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Save" />
         </p>
     </fieldset>
 }

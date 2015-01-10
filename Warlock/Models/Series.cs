@@ -26,6 +26,8 @@ namespace Warlock.Models
 
         public int? Volume { get; set; }
 
+        public bool Ongoing { get; set; }
+
         [NotMapped]
         public int NumberOfIssues { get; set; }
 

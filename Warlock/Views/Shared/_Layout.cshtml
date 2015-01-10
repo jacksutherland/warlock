@@ -1,7 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@using Warlock.Models
+
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
+        <meta content="The Adam Warlock Collection is a website dedicated to tracking Jack Sutherland's collection of every comic where Adam Warlock makes an appearance. It also serves as a chronology of Warlock comics.'." name="description" />
+        <meta content="marvel, warlock, adam warlock, thanos, infinity, infinity watch, pip, pip the troll, drax, drax the destroyer, moondragon, gammorah, starlin, jim starlin, him" name="keywords" />
         <title>The Adam Warlock Collection</title>
         <link href="http://www.southtunnel.com/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <link href='http://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
@@ -25,20 +29,10 @@
         <div class="site-nav hidden-xs">
             <div class="container">
                 <div class="row">
-                    <div class="col-xs-8">
-                        <ul>                            
-                            @*<li>@Html.ActionLink("Recent Issues", "Recent", "Issues")</li>*@
-                            <li>@Html.ActionLink("Collection", "Index", "Series")</li>
-                            <li>@Html.ActionLink("About", "About", "Home")</li>
-                            <li><a href="http://www.jacksutherland.com">Jack's Website</a></li>
-                            @if (User.Identity.Name == "jacksutherl")
-                            { 
-                                <li>@Html.ActionLink("Add Series", "Create", "Series")</li>
-                                @*<li>@Html.ActionLink("Scrape", "Scrape", "Admin")</li>*@                                
-                            }
-                        </ul>
+                    <div class="col-md-9 col-sm-12">
+                        @Html.Partial("_Nav")
                     </div>
-                    <div class="col-xs-4 text-right">
+                    <div class="col-xs-3 hidden-sm text-right">
                         @using (Html.BeginForm("Index", "Series", FormMethod.Post, new { onsubmit = "if($('#search').val().length < 3){ alert('Search criteria is too short. Enter at least 3 characters.'); return false; }" }))
                         {
                             @Html.TextBox("search", "", new { placeholder = "Search Series" })
@@ -61,11 +55,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12">
-                        Site by <a href="http://www.southtunnel.com">Southtunnel</a> 
+                        <a href="http://www.southtunnel.com">Site by Southtunnel</a> 
                         -  
                         @Html.ActionLink("About", "About", "Home") 
                         - 
-                        @Html.Partial("_LoginPartial") 
+                        <a href="http://www.jacksutherland.com">Jack's Website</a> 
+                        - 
+                        @Html.Partial("_LoginPartial")
                     </div>
                 </div>
             </div>

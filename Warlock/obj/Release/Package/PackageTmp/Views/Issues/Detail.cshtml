@@ -35,7 +35,19 @@ else
     {
         <h4 class="red-text margin-top10">I need this issue</h4>
     }
-    <a href="@Url.Action("Index", "Issues", new { id = Model.SeriesId })"><h4 class="blue-text margin-top10">Return to series</h4></a>
+    <div>
+        <a href="@Url.Action("Index", "Issues", new { id = Model.SeriesId })" class="big-link">Go to series</a>
+    </div>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div class="margin-bottom10">
+            <a href="@Url.Action("Edit", "Issues", new { id = Model.Id })" class="big-link">Edit</a>
+        </div>
+        using (Html.BeginForm("ToggleIssueOwned", "Issues", new { id = Model.Id, returnAction = "Detail" }))
+        {
+            <input type="submit" value="@(string.Format("Mark as {0}", Model.Owned ? "Unowned" : "Owned"))" />
+        }        
+    }
 </div>
 
 <div class="margin-top">
